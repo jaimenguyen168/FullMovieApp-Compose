@@ -17,10 +17,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException
 import retrofit2.HttpException
+import javax.inject.Inject
 
 private const val s = "Couldn't reach server. Check your internet connection"
 
-class MainRepositoryImpl(
+class MainRepositoryImpl @Inject constructor(
     private val app: Application,
     private val mediaApi: MediaApi,
     mediaDatabase: MediaDatabase

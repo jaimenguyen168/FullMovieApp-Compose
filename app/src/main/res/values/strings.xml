@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">FullMovieApp-Compose</string>
     <string name="server_error">Couldn\'t reach server. Check your internet connection</string>
+    <string name="see_all">See All</string>
+    <string name="categories">Categories</string>
+    <string name="movie">Movies</string>
+    <string name="tv_series">TV Series</string>
+    <string name="trending_now">Trending Now</string>
+    <string name="special">Special ✨</string>
+    <string name="search_a_movie_or_tv_series">Search a movie or tv series</string>
+    <string name="favorite_and_bookmark">Favorite and Bookmark</string>
 </resources>

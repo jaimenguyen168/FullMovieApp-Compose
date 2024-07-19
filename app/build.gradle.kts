@@ -120,6 +120,9 @@ dependencies {
     // Youtube Player
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
+    // for Material (pull refresh)
+    implementation("androidx.compose.material:material:1.3.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
