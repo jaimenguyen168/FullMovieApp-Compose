@@ -36,7 +36,6 @@ import com.example.fullmovieapp_compose.ui.components.NonFocusedTopBar
 import com.example.fullmovieapp_compose.ui.theme.BigRadius
 import com.example.fullmovieapp_compose.ui.theme.HugeRadius
 import com.example.fullmovieapp_compose.util.Screen
-import com.example.fullmovieapp_compose.util.Screen.MainScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt

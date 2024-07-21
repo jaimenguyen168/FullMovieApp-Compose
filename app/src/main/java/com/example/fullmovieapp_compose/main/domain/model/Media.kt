@@ -17,5 +17,13 @@ data class Media(
     val title: String,
     val voteAverage: Double,
     val voteCount: Int,
-    var category: String
+    var category: String,
+
+    // details
+    val runtime: Int,
+    val tagLine: String,
+
+    // to load video list and similar media list using their ids
+    val videoIds: List<String>,
+    val similarMediaIds: List<Int>,
 )

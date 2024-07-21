@@ -20,6 +20,7 @@ object GenreConstants {
         Genre(878, "Science Fiction"),
         Genre(9648, "Mystery"),
         Genre(10402, "Music"),
+        Genre(10749, "Romance"),
         Genre(10751, "Family"),
         Genre(10752, "War"),
         Genre(10759, "Action & Adventure"),

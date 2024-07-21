@@ -34,4 +34,9 @@ interface MainRepository {
         time: String,
         page: Int
     ): Flow<Resource<List<Media>>>
+
+    suspend fun getMediaById(id: Int): Media
+
+    // get media list by ids
+    suspend fun getMediaListByIds(ids: List<Int>): List<Media>
 }

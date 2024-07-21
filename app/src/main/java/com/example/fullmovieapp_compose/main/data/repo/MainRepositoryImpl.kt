@@ -186,4 +186,12 @@ class MainRepositoryImpl @Inject constructor(
         emit(Resource.Loading(false))
         return@flow
     }
+
+    override suspend fun getMediaById(id: Int): Media {
+        return mediaDao.getMediaItemById(id).toMedia()
+    }
+
+    override suspend fun getMediaListByIds(ids: List<Int>): List<Media> {
+        return mediaDao.getMediaListByIds(ids = ids).map { it.toMedia() }
+    }
 }

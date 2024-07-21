@@ -3,6 +3,7 @@ package com.example.fullmovieapp_compose.main.data.mapper
 import com.example.fullmovieapp_compose.main.data.local.MediaEntity
 import com.example.fullmovieapp_compose.main.data.remote.dto.MediaDto
 import com.example.fullmovieapp_compose.main.domain.model.Media
+import com.example.fullmovieapp_compose.util.APIConstants.MOVIE
 
 fun Media.toMediaEntity(): MediaEntity {
     return MediaEntity(
@@ -30,8 +31,20 @@ fun Media.toMediaEntity(): MediaEntity {
             ""
         },
         originalTitle = originalTitle,
-        category = category
+        category = category,
 
+        runtime = runtime,
+        tagLine = tagLine,
+        videoIds = try {
+            videoIds.joinToString(",")
+        } catch (e: Exception) {
+            ""
+        },
+        similarMediaIds = try {
+            similarMediaIds.joinToString(",")
+        } catch (e: Exception) {
+            ""
+        },
     )
 }
 
@@ -61,8 +74,28 @@ fun MediaEntity.toMedia(): Media {
             emptyList()
         },
         originalTitle = originalTitle,
-        category = category
+        category = category,
 
+        runtime = runtime,
+        tagLine = tagLine,
+        videoIds = if (videoIds.isEmpty()) {
+            emptyList()
+        } else {
+            try {
+                videoIds.split(",").map { it }
+            } catch (e: Exception) {
+                emptyList()
+            }
+        },
+        similarMediaIds = if (similarMediaIds.isEmpty()) {
+            emptyList()
+        } else {
+            try {
+                similarMediaIds.split(",").map { it.toInt() }
+            } catch (e: Exception) {
+                emptyList()
+            }
+        },
     )
 }
 
@@ -96,7 +129,53 @@ fun MediaDto.toMediaEntity(
             origin_country?.joinToString(",") ?: ""
         } catch (e: Exception) {
             ""
-        }
+        },
 
+        // default values since mediaDto doesn't have these values
+        runtime = 0,
+        tagLine = "",
+
+        videoIds = "",
+        similarMediaIds = ""
+    )
+}
+
+
+
+fun MediaDto.toMedia(
+    category: String
+) : Media {
+    return Media(
+        mediaId = id ?: 0,
+
+        backdropPath = backdrop_path ?: "",
+        originalLanguage = original_language ?: "",
+        overview = overview ?: "",
+        posterPath = poster_path ?: "",
+        releaseDate = release_date ?: first_air_date ?: "",
+        title = title ?: name ?: "",
+        voteAverage = vote_average ?: 0.0,
+        popularity = popularity ?: 0.0,
+        voteCount = vote_count ?: 0,
+        genreIds = if (genre_ids?.isEmpty() == true) {
+            emptyList()
+        } else {
+            try {
+                genre_ids?.map { it.toString() } ?: emptyList()
+            } catch (e: Exception) {
+                emptyList()
+            }
+        },
+        adult = adult ?: false,
+        mediaType = media_type ?: MOVIE,
+        category = category,
+        originCountry = origin_country ?: emptyList(),
+        originalTitle = original_title ?: original_name ?: "",
+
+        // default values since mediaDto doesn't have these values
+        runtime = 0,
+        tagLine = "",
+        videoIds = emptyList(),
+        similarMediaIds = emptyList()
     )
 }

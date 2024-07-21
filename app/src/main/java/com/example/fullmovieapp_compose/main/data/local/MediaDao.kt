@@ -47,6 +47,10 @@ interface MediaDao {
     // delete all media items by category
     @Query("DELETE FROM MediaEntity WHERE category = :category")
     suspend fun deleteMediaItemsByCategory(category: String)
+
+    // get media list by ids
+    @Query("SELECT * FROM MediaEntity WHERE mediaId IN (:ids)")
+    suspend fun getMediaListByIds(ids: List<Int>): List<MediaEntity>
 }
 
 
