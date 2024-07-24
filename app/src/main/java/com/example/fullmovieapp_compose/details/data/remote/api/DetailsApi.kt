@@ -27,7 +27,7 @@ interface DetailsApi {
     suspend fun getSimilarMediaList(
         @Path("type") type: String,
         @Path("id") id: Int,
-        @Path("page") page: Int,
+        @Query("page") page: Int,
         @Query("api_key") apiKey: String = MediaApi.API_KEY
     ): MediaListDto?
 }

@@ -27,6 +27,9 @@ import coil.size.Size
 import com.example.fullmovieapp_compose.main.data.remote.api.MediaApi
 import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.ui.theme.Radius
+import com.example.fullmovieapp_compose.util.Screen
+import com.example.fullmovieapp_compose.util.onBackgroundColor
+import com.example.fullmovieapp_compose.util.primaryColor
 
 @Composable
 fun MediaItemImage(
@@ -54,7 +57,9 @@ fun MediaItemImage(
             .clip(RoundedCornerShape(Radius))
             .background(MaterialTheme.colorScheme.inverseOnSurface)
             .clickable {
-//                mainNavController.navigateUp()
+                mainNavController.navigate(
+                    Screen.CoreDetails(mediaItem.mediaId)
+                )
             }
     ) {
         when (imageState) {
@@ -68,7 +73,7 @@ fun MediaItemImage(
             }
             is AsyncImagePainter.State.Loading -> {
                 CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.primary,
+                    color = primaryColor(),
                     modifier = Modifier
                         .size(80.dp)
                         .align(Alignment.Center)
@@ -78,7 +83,7 @@ fun MediaItemImage(
                 Icon(
                     imageVector = Icons.Rounded.ImageNotSupported,
                     contentDescription = mediaItem.title,
-                    tint = MaterialTheme.colorScheme.onBackground,
+                    tint = onBackgroundColor(),
                     modifier = Modifier
                         .size(100.dp)
                         .align(Alignment.Center)

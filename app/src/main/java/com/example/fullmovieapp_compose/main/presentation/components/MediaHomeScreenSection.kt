@@ -61,6 +61,7 @@ fun MediaHomeScreenSection(
             mediaList = mainState.trendingList.take(10)
             title = stringResource(R.string.trending_now)
         }
+        else -> Unit
     }
 
     Column {

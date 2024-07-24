@@ -8,10 +8,12 @@ import com.example.fullmovieapp_compose.details.domain.repo.SimilarRepository
 import com.example.fullmovieapp_compose.details.domain.repo.VideosRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@Singleton
+@InstallIn(SingletonComponent::class)
 abstract class DetailsRepositoryModule {
 
     @Binds

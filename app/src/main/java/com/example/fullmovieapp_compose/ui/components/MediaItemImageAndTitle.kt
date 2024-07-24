@@ -46,6 +46,7 @@ import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.main.domain.usecase.GenreIdsToString
 import com.example.fullmovieapp_compose.ui.theme.Radius
 import com.example.fullmovieapp_compose.ui.theme.RadiusContainer
+import com.example.fullmovieapp_compose.util.Screen
 import com.example.fullmovieapp_compose.util.primaryContainerColor
 import com.example.fullmovieapp_compose.util.secondaryContainerColor
 
@@ -80,7 +81,9 @@ fun MediaItemImageAndTitle(
                     )
                 )
             )
-            .clickable { }
+            .clickable {
+                mainNavController.navigate(Screen.CoreDetails(mediaItem.mediaId))
+            }
     ) {
         Box(
             modifier = Modifier

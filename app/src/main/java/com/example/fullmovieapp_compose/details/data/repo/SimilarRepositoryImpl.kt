@@ -20,7 +20,7 @@ class SimilarRepositoryImpl @Inject constructor(
     private val mainRepository: MainRepository,
     private val app: Application
 ): SimilarRepository {
-    override suspend fun getSimilarMedia(
+    override suspend fun getSimilarMediaList(
         id: Int
     ): Flow<Resource<List<Media>>> = flow {
         emit(Resource.Loading(true))
@@ -43,11 +43,11 @@ class SimilarRepositoryImpl @Inject constructor(
 
         // upsert media item with the list of similar media ids to database
         remoteSimilarList?.let { similarMediaListDto ->
+            val similarIds = similarMediaListDto.map { it.id ?: 0 }
+
             mainRepository.upsertMediaItem(
                 media.copy(
-                    similarMediaIds = similarMediaListDto.map {
-                        it.id ?: 0
-                    }
+                    similarMediaIds = similarIds
                 )
             )
 
@@ -61,7 +61,7 @@ class SimilarRepositoryImpl @Inject constructor(
 
             // get similar media list from database after upsert
             emit(Resource.Success(
-                mainRepository.getMediaListByIds(media.similarMediaIds)
+                mainRepository.getMediaListByIds(similarIds)
             ))
             emit(Resource.Loading(false))
             return@flow

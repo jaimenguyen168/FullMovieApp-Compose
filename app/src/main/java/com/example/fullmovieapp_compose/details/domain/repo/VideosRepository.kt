@@ -8,5 +8,4 @@ interface VideosRepository {
         id: Int,
         isRefreshing: Boolean
     ): Flow<Resource<List<String>>>
-
 }

@@ -44,7 +44,7 @@ class DetailsRepositoryImpl @Inject constructor(
         remoteDetails?.let { detailsDto ->
             val mediaWithDetails = mediaItem.copy(
                 runtime = detailsDto.runtime ?: 0,
-                tagLine = detailsDto.tagLine ?: ""
+                tagLine = detailsDto.tagline ?: ""
             )
 
             mainRepository.upsertMediaItem(mediaWithDetails)

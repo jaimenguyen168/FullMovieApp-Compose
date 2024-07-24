@@ -116,7 +116,6 @@ fun MainScreen(
                 .fillMaxSize()
                 .nestedScroll(nestedScrollConnection)
                 .pullRefresh(refreshState)
-//                .nestedScroll()
         ) {
             Column(
                 modifier = Modifier

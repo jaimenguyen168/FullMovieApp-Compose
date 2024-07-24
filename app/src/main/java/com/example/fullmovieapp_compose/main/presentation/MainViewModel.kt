@@ -72,6 +72,7 @@ class MainViewModel @Inject constructor(
                             isRefreshing = true
                         )
                     }
+                    else -> Unit
                 }
             }
             is MainUiEvent.Paginate -> {
@@ -80,6 +81,7 @@ class MainViewModel @Inject constructor(
                     Screen.MovieScreen -> loadMovies(fetchFromRemote = true)
                     Screen.TVScreen -> loadTV(fetchFromRemote = true)
                     Screen.TrendingScreen -> loadTrending(fetchFromRemote = true)
+                    else -> Unit
                 }
             }
         }

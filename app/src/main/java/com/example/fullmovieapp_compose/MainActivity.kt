@@ -3,22 +3,21 @@ package com.example.fullmovieapp_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import androidx.navigation.toRoute
+import com.example.fullmovieapp_compose.details.presentation.CoreDetailsScreen
 import com.example.fullmovieapp_compose.main.presentation.MainScreen
 import com.example.fullmovieapp_compose.main.presentation.MainViewModel
 import com.example.fullmovieapp_compose.main.presentation.main_media_list.MainMediaListScreen
@@ -83,6 +82,15 @@ class MainActivity : ComponentActivity() {
                                 mainState = mainState,
                                 mainNavController = mainNavController,
                                 onEvent = mainViewModel::event
+                            )
+                        }
+
+                        // passing arguments using type-safe navigation
+                        composable<Screen.CoreDetails> {
+                            val args = it.toRoute<Screen.CoreDetails>()
+                            CoreDetailsScreen(
+                                mediaId = args.mediaId,
+                                mainNavController = mainNavController,
                             )
                         }
                     }

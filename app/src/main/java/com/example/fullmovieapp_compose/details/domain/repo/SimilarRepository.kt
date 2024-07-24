@@ -5,7 +5,7 @@ import com.example.fullmovieapp_compose.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface SimilarRepository {
-    suspend fun getSimilarMedia(
+    suspend fun getSimilarMediaList(
         id: Int
     ): Flow<Resource<List<Media>>>
 }

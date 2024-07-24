@@ -79,7 +79,7 @@ class VideosRepositoryImpl @Inject constructor(
         }
 
         val videos = remoteVideos?.results?.filter {
-            it.site == "Youtube" && it.key?.isNotEmpty() == true
+            it.site == "YouTube" && it.key?.isNotEmpty() == true
         }
 
         return  videos?.map { it.key!! }
