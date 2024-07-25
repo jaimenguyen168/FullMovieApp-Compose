@@ -20,4 +20,5 @@
     <string name="like">Like</string>
     <string name="bookmark">Bookmark</string>
     <string name="video_not_found">Video not found 🥺</string>
+    <string name="clear_search">Clear search</string>
 </resources>

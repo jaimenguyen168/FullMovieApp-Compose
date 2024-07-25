@@ -13,4 +13,8 @@ sealed interface Screen {
     @Serializable data object Details: Screen
     @Serializable data object WatchVideo: Screen
     @Serializable data object Similar: Screen
+
+    // Search Route
+    @Serializable data object Search: Screen
+
 }

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.fullmovieapp_compose.R
+import com.example.fullmovieapp_compose.util.Screen
 import com.example.fullmovieapp_compose.util.onBackgroundColor
 import com.example.fullmovieapp_compose.util.onPrimaryColor
 import com.example.fullmovieapp_compose.util.primaryColor
@@ -45,7 +46,9 @@ fun NonFocusedSearchBar(
                 .clip(RoundedCornerShape(50.dp))
                 .background(secondaryContainerColor())
                 .padding(start = 16.dp, end = 7.dp)
-                .clickable { },
+                .clickable {
+                    mainNavController.navigate(Screen.Search)
+                },
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(

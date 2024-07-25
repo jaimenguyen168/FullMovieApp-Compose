@@ -21,6 +21,7 @@ import com.example.fullmovieapp_compose.details.presentation.CoreDetailsScreen
 import com.example.fullmovieapp_compose.main.presentation.MainScreen
 import com.example.fullmovieapp_compose.main.presentation.MainViewModel
 import com.example.fullmovieapp_compose.main.presentation.main_media_list.MainMediaListScreen
+import com.example.fullmovieapp_compose.search.presentation.SearchListScreen
 import com.example.fullmovieapp_compose.ui.theme.FullMovieAppComposeTheme
 import com.example.fullmovieapp_compose.util.Screen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -91,6 +92,12 @@ class MainActivity : ComponentActivity() {
                             CoreDetailsScreen(
                                 mediaId = args.mediaId,
                                 mainNavController = mainNavController,
+                            )
+                        }
+
+                        composable<Screen.Search> {
+                            SearchListScreen(
+                                mainNavController = mainNavController
                             )
                         }
                     }
