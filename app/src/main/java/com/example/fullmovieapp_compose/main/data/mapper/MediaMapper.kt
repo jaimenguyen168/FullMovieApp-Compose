@@ -45,6 +45,9 @@ fun Media.toMediaEntity(): MediaEntity {
         } catch (e: Exception) {
             ""
         },
+
+        isLiked = isLiked,
+        isBookmarked = isBookmarked
     )
 }
 
@@ -96,12 +99,17 @@ fun MediaEntity.toMedia(): Media {
                 emptyList()
             }
         },
+
+        isLiked = isLiked,
+        isBookmarked = isBookmarked
     )
 }
 
 fun MediaDto.toMediaEntity(
     type: String,
-    category: String
+    category: String,
+    isLiked: Boolean = false,
+    isBookmarked: Boolean = false
 ): MediaEntity {
     return MediaEntity(
         mediaId = id ?: 0,
@@ -136,14 +144,19 @@ fun MediaDto.toMediaEntity(
         tagLine = "",
 
         videoIds = "",
-        similarMediaIds = ""
+        similarMediaIds = "",
+
+        isLiked = isLiked,
+        isBookmarked = isBookmarked
     )
 }
 
 
 
 fun MediaDto.toMedia(
-    category: String
+    category: String,
+    isLiked: Boolean = false,
+    isBookmarked: Boolean = false
 ) : Media {
     return Media(
         mediaId = id ?: 0,
@@ -176,6 +189,9 @@ fun MediaDto.toMedia(
         runtime = 0,
         tagLine = "",
         videoIds = emptyList(),
-        similarMediaIds = emptyList()
+        similarMediaIds = emptyList(),
+
+        isLiked = isLiked,
+        isBookmarked = isBookmarked
     )
 }

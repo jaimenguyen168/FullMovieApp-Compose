@@ -2,6 +2,7 @@ package com.example.fullmovieapp_compose.main.data.repo
 
 import android.app.Application
 import com.example.fullmovieapp_compose.R
+import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import com.example.fullmovieapp_compose.main.data.local.MediaDao
 import com.example.fullmovieapp_compose.main.data.local.MediaDatabase
 import com.example.fullmovieapp_compose.main.data.mapper.toMedia
@@ -24,7 +25,8 @@ private const val s = "Couldn't reach server. Check your internet connection"
 class MainRepositoryImpl @Inject constructor(
     private val app: Application,
     private val mediaApi: MediaApi,
-    mediaDatabase: MediaDatabase
+    mediaDatabase: MediaDatabase,
+    private val favoriteMediaRepository: FavoriteMediaRepository
 ): MainRepository {
 
     private val mediaDao: MediaDao = mediaDatabase.mediaDao
@@ -88,9 +90,16 @@ class MainRepositoryImpl @Inject constructor(
 
         remoteMediaList?.let { mediaListDto ->
             val entities = mediaListDto.map { mediaDto ->
+                val favoriteMediaItem =
+                    favoriteMediaRepository
+                        .getFavoriteMediaItemById(mediaDto.id ?: 0
+                    )
+
                 mediaDto.toMediaEntity(
                     type = type,
-                    category = POPULAR
+                    category = POPULAR,
+                    isLiked = favoriteMediaItem?.isLiked ?: false,
+                    isBookmarked = favoriteMediaItem?.isBookmarked ?: false
                 )
             }
 
@@ -161,9 +170,16 @@ class MainRepositoryImpl @Inject constructor(
 
         remoteMediaList?.let { mediaListDto ->
             val entities = mediaListDto.map { mediaDto ->
+                val favoriteMediaItem =
+                    favoriteMediaRepository
+                        .getFavoriteMediaItemById(mediaDto.id ?: 0
+                    )
+
                 mediaDto.toMediaEntity(
                     type = mediaDto.media_type ?: MOVIE,
-                    category = TRENDING
+                    category = TRENDING,
+                    isLiked = favoriteMediaItem?.isLiked ?: false,
+                    isBookmarked = favoriteMediaItem?.isBookmarked ?: false
                 )
             }
 

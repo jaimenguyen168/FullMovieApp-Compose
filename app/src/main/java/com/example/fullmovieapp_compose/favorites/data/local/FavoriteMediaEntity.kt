@@ -1,13 +1,18 @@
-package com.example.fullmovieapp_compose.main.domain.model
+package com.example.fullmovieapp_compose.favorites.data.local
 
-data class Media(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class FavoriteMediaEntity(
+    @PrimaryKey
     val mediaId: Int,
 
     val adult: Boolean,
     val backdropPath: String,
-    val genreIds: List<String>,
-    val mediaType: String,
-    val originCountry: List<String>,
+    val genreIds: String,
+    var mediaType: String,
+    val originCountry: String,
     val originalLanguage: String,
     val originalTitle: String,
     val overview: String,
@@ -19,13 +24,11 @@ data class Media(
     val voteCount: Int,
     var category: String,
 
-    // details
     val runtime: Int,
     val tagLine: String,
 
-    // to load video list and similar media list using their ids
-    val videoIds: List<String>,
-    val similarMediaIds: List<Int>,
+    val videoIds: String,
+    val similarMediaIds: String,
 
     // to favorite
     val isLiked: Boolean,

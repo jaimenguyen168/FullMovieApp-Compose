@@ -2,6 +2,7 @@ package com.example.fullmovieapp_compose.search.data.repo
 
 import android.app.Application
 import com.example.fullmovieapp_compose.R
+import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import com.example.fullmovieapp_compose.main.data.mapper.toMedia
 import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.search.data.remote.api.SearchApi
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
     private val searchApi: SearchApi,
-    private val app: Application
+    private val app: Application,
+    private val favoriteMediaRepository: FavoriteMediaRepository
 ): SearchRepository {
     override suspend fun getSearchList(
         query: String,
@@ -47,7 +49,18 @@ class SearchRepositoryImpl @Inject constructor(
         }
 
         remoteSearchList?.let { mediaListDto ->
-            val searchMediaList = mediaListDto.map { it.toMedia(POPULAR) }
+            val searchMediaList = mediaListDto.map { mediaDto ->
+                val favoriteMediaItem =
+                    favoriteMediaRepository
+                        .getFavoriteMediaItemById(mediaDto.id ?: 0
+                    )
+
+                mediaDto.toMedia(
+                    category = POPULAR,
+                    isLiked = favoriteMediaItem?.isLiked ?: false,
+                    isBookmarked = favoriteMediaItem?.isBookmarked ?: false
+                )
+            }
 
             emit(Resource.Success(searchMediaList))
             emit(Resource.Loading(false))

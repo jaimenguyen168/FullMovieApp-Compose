@@ -6,6 +6,7 @@ import com.example.fullmovieapp_compose.details.domain.repo.DetailsRepository
 import com.example.fullmovieapp_compose.details.domain.repo.SimilarRepository
 import com.example.fullmovieapp_compose.details.domain.repo.VideosRepository
 import com.example.fullmovieapp_compose.details.domain.usecase.MinutesToReadableTime
+import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import com.example.fullmovieapp_compose.main.domain.repo.MainRepository
 import com.example.fullmovieapp_compose.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,8 @@ class DetailsViewModel @Inject constructor(
     private val mainRepository: MainRepository,
     private val detailsRepository: DetailsRepository,
     private val videoRepository: VideosRepository,
-    private val similarRepository: SimilarRepository
+    private val similarRepository: SimilarRepository,
+    private val favoriteMediaRepository: FavoriteMediaRepository
 ): ViewModel() {
 
     private val _detailsState = MutableStateFlow(DetailsState())
@@ -47,6 +49,29 @@ class DetailsViewModel @Inject constructor(
             }
             DetailsUiEvent.Refresh -> {
                 loadMediaItem(isRefreshing = true)
+            }
+
+            DetailsUiEvent.BookmarkOrUnBookmark -> bookmarkOrUnBookmark()
+            DetailsUiEvent.LikeOrDislike -> likeOrDislike()
+            is DetailsUiEvent.ShowOrHideAlertDialog -> {
+                val media = detailsState.value.media
+
+                if (event.alertType == 1 && media?.isLiked == false) {
+                    likeOrDislike()
+                    return
+                }
+
+                if (event.alertType == 2 && media?.isBookmarked == false) {
+                    bookmarkOrUnBookmark()
+                    return
+                }
+
+                _detailsState.update {
+                    it.copy(
+                        showAlertDialog = !it.showAlertDialog,
+                        alertType = event.alertType
+                    )
+                }
             }
         }
     }
@@ -145,6 +170,46 @@ class DetailsViewModel @Inject constructor(
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun likeOrDislike() {
+        _detailsState.update {
+            it.copy(
+                media = it.media?.copy(
+                    isLiked = !it.media.isLiked
+                ),
+                alertType = 0,
+                showAlertDialog = false
+            )
+        }
+        updateOrDeleteMedia()
+    }
+
+    private fun bookmarkOrUnBookmark() {
+        _detailsState.update {
+            it.copy(
+                media = it.media?.copy(
+                    isBookmarked = !it.media.isBookmarked
+                ),
+                alertType = 0,
+                showAlertDialog = false
+            )
+        }
+        updateOrDeleteMedia()
+    }
+
+    private fun updateOrDeleteMedia() {
+        viewModelScope.launch {
+            _detailsState.value.media?.let { media ->
+                if (!media.isLiked && !media.isBookmarked) {
+                    favoriteMediaRepository.deleteFavoriteMediaItem(media)
+                } else {
+                    favoriteMediaRepository.upsertFavoriteMediaItem(media)
+
+                    mainRepository.upsertMediaItem(media)
                 }
             }
         }

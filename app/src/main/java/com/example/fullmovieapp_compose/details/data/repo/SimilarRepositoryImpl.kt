@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.fullmovieapp_compose.R
 import com.example.fullmovieapp_compose.details.data.remote.api.DetailsApi
 import com.example.fullmovieapp_compose.details.domain.repo.SimilarRepository
+import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import com.example.fullmovieapp_compose.main.data.mapper.toMedia
 import com.example.fullmovieapp_compose.main.data.remote.dto.MediaDto
 import com.example.fullmovieapp_compose.main.domain.model.Media
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class SimilarRepositoryImpl @Inject constructor(
     private val detailsApi: DetailsApi,
     private val mainRepository: MainRepository,
-    private val app: Application
+    private val app: Application,
+    private val favoriteMediaRepository: FavoriteMediaRepository
 ): SimilarRepository {
     override suspend fun getSimilarMediaList(
         id: Int
@@ -53,7 +55,16 @@ class SimilarRepositoryImpl @Inject constructor(
 
             // convert similar media list dto to media list
             val similarMediaList = similarMediaListDto.map { similarMediaDto ->
-                similarMediaDto.toMedia(media.category)
+                val favoriteMediaItem =
+                    favoriteMediaRepository
+                        .getFavoriteMediaItemById(similarMediaDto.id ?: 0
+                    )
+
+                similarMediaDto.toMedia(
+                    category = media.category,
+                    isLiked = favoriteMediaItem?.isLiked ?: false,
+                    isBookmarked = favoriteMediaItem?.isBookmarked ?: false
+                )
             }
 
             // upsert similar media list to database

@@ -28,5 +28,9 @@ data class MediaEntity (
     val tagLine: String,
 
     val videoIds: String,
-    val similarMediaIds: String
+    val similarMediaIds: String,
+
+    // to favorite
+    val isLiked: Boolean,
+    val isBookmarked: Boolean
 )

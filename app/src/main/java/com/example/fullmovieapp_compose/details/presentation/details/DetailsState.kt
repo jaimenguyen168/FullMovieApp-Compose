@@ -12,4 +12,7 @@ data class DetailsState(
 
     val videos: List<String> = emptyList(),
     val similarMediaList: List<Media> = emptyList(),
+
+    val showAlertDialog: Boolean = false,
+    val alertType: Int = 0
 )
