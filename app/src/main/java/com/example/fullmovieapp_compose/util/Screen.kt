@@ -17,4 +17,9 @@ sealed interface Screen {
     // Search Route
     @Serializable data object Search: Screen
 
+    // Favorites Route
+    @Serializable data object CoreFavorites: Screen
+    @Serializable data object Favorites: Screen
+    @Serializable data object LikedList: Screen
+    @Serializable data object BookmarkedList: Screen
 }

@@ -26,10 +26,10 @@ import com.example.fullmovieapp_compose.util.Screen
 @Composable
 fun AutoSwipeSection(
     title: String,
-//    route: Screen = Screen.MainScreen,
+    route: Screen = Screen.MainScreen,
     showSeeAll: Boolean = false,
     mainNavController: NavController,
-//    navController: NavController? = null,
+    navController: NavController? = null,
     mediaList: List<Media>,
 ) {
     Column {
@@ -52,7 +52,7 @@ fun AutoSwipeSection(
                     color = MaterialTheme.colorScheme.onBackground.copy(0.7f),
                     fontSize = 14.sp,
                     modifier = Modifier.clickable {
-//                        navController?.navigate(route)
+                        navController?.navigate(route)
                     }
                 )
             }

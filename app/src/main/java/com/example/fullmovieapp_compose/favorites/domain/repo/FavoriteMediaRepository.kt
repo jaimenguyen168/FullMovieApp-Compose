@@ -24,7 +24,7 @@ interface FavoriteMediaRepository {
 
     suspend fun getBookmarkedList(): List<Media>
 
-    suspend fun getAllFavoriteMediaItem(): List<Media>
-
-    suspend fun deleteAllFavoriteMediaItems()
+//    suspend fun getAllFavoriteMediaItem(): List<Media>
+//
+//    suspend fun deleteAllFavoriteMediaItems()
 }

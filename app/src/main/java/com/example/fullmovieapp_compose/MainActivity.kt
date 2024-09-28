@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.toRoute
 import com.example.fullmovieapp_compose.details.presentation.CoreDetailsScreen
+import com.example.fullmovieapp_compose.favorites.presentation.CoreFavoritesScreen
 import com.example.fullmovieapp_compose.main.presentation.MainScreen
 import com.example.fullmovieapp_compose.main.presentation.MainViewModel
 import com.example.fullmovieapp_compose.main.presentation.main_media_list.MainMediaListScreen
@@ -97,6 +98,12 @@ class MainActivity : ComponentActivity() {
 
                         composable<Screen.Search> {
                             SearchListScreen(
+                                mainNavController = mainNavController
+                            )
+                        }
+
+                        composable<Screen.CoreFavorites> {
+                            CoreFavoritesScreen(
                                 mainNavController = mainNavController
                             )
                         }

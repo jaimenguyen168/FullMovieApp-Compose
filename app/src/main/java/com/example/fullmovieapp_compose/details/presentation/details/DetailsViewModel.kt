@@ -203,7 +203,7 @@ class DetailsViewModel @Inject constructor(
 
     private fun updateOrDeleteMedia() {
         viewModelScope.launch {
-            _detailsState.value.media?.let { media ->
+            detailsState.value.media?.let { media ->
                 if (!media.isLiked && !media.isBookmarked) {
                     favoriteMediaRepository.deleteFavoriteMediaItem(media)
                 } else {

@@ -45,9 +45,11 @@ fun FavoriteSection(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            FloatingActionButton(onClick = {
-                onEvent(DetailsUiEvent.ShowOrHideAlertDialog(1))
-            }) {
+            FloatingActionButton(
+                onClick = {
+                    onEvent(DetailsUiEvent.ShowOrHideAlertDialog(1))
+                }
+            ) {
                 if (media.isLiked) {
                     Icon(
                         imageVector = Icons.Rounded.Favorite,

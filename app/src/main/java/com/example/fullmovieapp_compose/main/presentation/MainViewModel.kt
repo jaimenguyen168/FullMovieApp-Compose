@@ -87,10 +87,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun extracted() {
-        TODO()
-    }
-
     private fun loadSpecial(list: List<Media>) {
         if (mainState.value.specialList.size <= 4) {
             _mainState.update {

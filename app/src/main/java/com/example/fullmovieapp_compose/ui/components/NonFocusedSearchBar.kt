@@ -72,7 +72,9 @@ fun NonFocusedSearchBar(
                         .clip(CircleShape)
                         .alpha(0.8f)
                         .background(primaryColor())
-                        .clickable { }
+                        .clickable {
+
+                        }
                 ) {
                     Text(
                         text = username.take(1),
@@ -91,7 +93,9 @@ fun NonFocusedSearchBar(
                 .size(47.dp)
                 .clip(CircleShape)
                 .background(secondaryContainerColor())
-                .clickable { }
+                .clickable {
+                    mainNavController.navigate(Screen.CoreFavorites)
+                }
         ) {
             Icon(
                 imageVector = Icons.Rounded.Bookmark,
