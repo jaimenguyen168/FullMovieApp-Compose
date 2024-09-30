@@ -17,7 +17,6 @@ import androidx.compose.material.icons.rounded.Category
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -67,7 +66,9 @@ fun MainScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
-//                mainNavController.navigate()
+                mainNavController.navigate(
+                    Screen.CoreCategories
+                )
             }) {
                 Icon(
                     imageVector = Icons.Rounded.Category,

@@ -1,8 +1,5 @@
 package com.example.fullmovieapp_compose.search.di
 
-import android.app.Application
-import androidx.room.Room
-import com.example.fullmovieapp_compose.main.data.local.MediaDatabase
 import com.example.fullmovieapp_compose.main.data.remote.api.MediaApi
 import com.example.fullmovieapp_compose.search.data.remote.api.SearchApi
 import dagger.Module

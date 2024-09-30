@@ -48,7 +48,6 @@ import com.example.fullmovieapp_compose.ui.components.AverageColor
 import com.example.fullmovieapp_compose.ui.components.RatingBar
 import com.example.fullmovieapp_compose.ui.theme.Radius
 import com.example.fullmovieapp_compose.ui.theme.RadiusContainer
-import com.example.fullmovieapp_compose.util.Screen
 import com.example.fullmovieapp_compose.util.primaryContainerColor
 import com.example.fullmovieapp_compose.util.secondaryContainerColor
 

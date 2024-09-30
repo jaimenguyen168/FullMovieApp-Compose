@@ -29,4 +29,6 @@
     <string name="no">No</string>
     <string name="favorites_heart">Favorites ❤️</string>
     <string name="bookmarks_fire">Bookmarks 🔥️</string>
+    <string name="categories_title">Categories</string>
+    <string name="action_adventure"><![CDATA[Action & Adventure]]></string>
 </resources>

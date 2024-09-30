@@ -11,12 +11,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import androidx.navigation.toRoute
+import com.example.fullmovieapp_compose.categories.presentation.CoreCategoriesScreen
 import com.example.fullmovieapp_compose.details.presentation.CoreDetailsScreen
 import com.example.fullmovieapp_compose.favorites.presentation.CoreFavoritesScreen
 import com.example.fullmovieapp_compose.main.presentation.MainScreen
@@ -104,6 +103,12 @@ class MainActivity : ComponentActivity() {
 
                         composable<Screen.CoreFavorites> {
                             CoreFavoritesScreen(
+                                mainNavController = mainNavController
+                            )
+                        }
+
+                        composable<Screen.CoreCategories> {
+                            CoreCategoriesScreen(
                                 mainNavController = mainNavController
                             )
                         }

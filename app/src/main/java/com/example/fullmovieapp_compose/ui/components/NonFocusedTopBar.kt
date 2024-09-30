@@ -18,8 +18,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.fullmovieapp_compose.main.presentation.MainScreen
-import com.example.fullmovieapp_compose.main.presentation.MainState
 import com.example.fullmovieapp_compose.ui.theme.BigRadius
 import com.example.fullmovieapp_compose.ui.theme.HugeRadius
 import com.example.fullmovieapp_compose.util.backgroundColor

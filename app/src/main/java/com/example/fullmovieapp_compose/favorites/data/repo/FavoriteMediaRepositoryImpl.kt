@@ -3,7 +3,6 @@ package com.example.fullmovieapp_compose.favorites.data.repo
 import com.example.fullmovieapp_compose.favorites.data.local.FavoriteMediaDatabase
 import com.example.fullmovieapp_compose.favorites.data.mapper.toFavoriteMediaEntity
 import com.example.fullmovieapp_compose.favorites.data.mapper.toMedia
-import com.example.fullmovieapp_compose.favorites.di.FavoriteMediaRepositoryModule
 import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import com.example.fullmovieapp_compose.main.data.local.MediaDatabase
 import com.example.fullmovieapp_compose.main.domain.model.Media

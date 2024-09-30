@@ -1,6 +1,5 @@
 package com.example.fullmovieapp_compose.main.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fullmovieapp_compose.main.domain.model.Media
@@ -21,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val mainRepository: MainRepository
+    private val mainRepository: MainRepository,
+//    private val favoriteMediaRepository: FavoriteMediaRepository
 ): ViewModel() {
     private val _mainState = MutableStateFlow(MainState())
     val mainState = _mainState.asStateFlow()
@@ -30,7 +30,21 @@ class MainViewModel @Inject constructor(
         loadTrending()
         loadTV()
         loadMovies()
+
+//        observeFavoriteMediaUpdates()
     }
+
+//    private fun observeFavoriteMediaUpdates() {
+//        viewModelScope.launch {
+//            favoriteMediaRepository.favoriteMediaDbUpdateEventFlow().collect { updateEvent ->
+//                if (updateEvent) {
+//                    loadTrending()
+//                    loadTV()
+//                    loadMovies()
+//                }
+//            }
+//        }
+//    }
 
     fun event(mainUiEvent: MainUiEvent) {
         when (mainUiEvent) {

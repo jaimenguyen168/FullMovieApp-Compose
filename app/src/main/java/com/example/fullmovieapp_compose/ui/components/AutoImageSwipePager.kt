@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.ui.theme.Radius
-import com.example.fullmovieapp_compose.util.Screen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

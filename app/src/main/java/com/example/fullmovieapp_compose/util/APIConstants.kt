@@ -13,3 +13,11 @@ object APIConstants {
     // Tag for debugging
     const val GET_TAG = "--> GET https://api.themoviedb.org"
 }
+
+object Constants {
+    const val actionAndAdventureList = "Action And Adventure"
+    const val dramaList = "Drama"
+    const val comedyList = "Comedy"
+    const val sciFiAndFantasyList = "Sci-Fi And Fantasy"
+    const val animationList = "Animation"
+}

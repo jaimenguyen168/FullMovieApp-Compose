@@ -23,8 +23,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.fullmovieapp_compose.search.presentation.component.SearchItem
 import com.example.fullmovieapp_compose.ui.components.FocusedTopBar
-import com.example.fullmovieapp_compose.ui.components.MediaItemImageAndTitle
-import com.example.fullmovieapp_compose.ui.components.NonFocusedTopBar
 import com.example.fullmovieapp_compose.ui.theme.BigRadius
 import com.example.fullmovieapp_compose.ui.theme.HugeRadius
 import com.example.fullmovieapp_compose.util.Screen

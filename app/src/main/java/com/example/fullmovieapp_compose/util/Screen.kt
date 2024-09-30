@@ -22,4 +22,10 @@ sealed interface Screen {
     @Serializable data object Favorites: Screen
     @Serializable data object LikedList: Screen
     @Serializable data object BookmarkedList: Screen
+
+    // Categories Route
+    @Serializable data object CoreCategories: Screen
+    @Serializable data object Categories: Screen
+    @Serializable
+    data class CategoriesList(val category: String): Screen
 }

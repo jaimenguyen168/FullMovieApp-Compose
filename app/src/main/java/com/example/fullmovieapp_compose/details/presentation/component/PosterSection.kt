@@ -1,7 +1,5 @@
 package com.example.fullmovieapp_compose.details.presentation.component
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -19,7 +17,6 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.example.fullmovieapp_compose.R
-import com.example.fullmovieapp_compose.details.presentation.details.DetailsUiEvent
 import com.example.fullmovieapp_compose.main.data.remote.api.MediaApi
 import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.ui.theme.SmallRadius

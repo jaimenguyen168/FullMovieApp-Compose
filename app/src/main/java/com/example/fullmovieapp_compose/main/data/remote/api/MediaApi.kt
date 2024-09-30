@@ -1,7 +1,6 @@
 package com.example.fullmovieapp_compose.main.data.remote.api
 
 import com.example.fullmovieapp_compose.BuildConfig
-import com.example.fullmovieapp_compose.main.data.remote.dto.MediaDto
 import com.example.fullmovieapp_compose.main.data.remote.dto.MediaListDto
 import retrofit2.http.GET
 import retrofit2.http.Path
