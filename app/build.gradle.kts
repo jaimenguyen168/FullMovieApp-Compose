@@ -123,6 +123,9 @@ dependencies {
     // for Material (pull refresh)
     implementation("androidx.compose.material:material:1.3.0")
 
+    // Encrypted Shared Preference
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -38,4 +38,6 @@ interface MainRepository {
 
     // get media list by ids
     suspend fun getMediaListByIds(ids: List<Int>): List<Media>
+
+    suspend fun clear()
 }

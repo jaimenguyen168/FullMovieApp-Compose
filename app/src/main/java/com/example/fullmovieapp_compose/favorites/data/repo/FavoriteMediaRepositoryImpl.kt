@@ -59,6 +59,10 @@ class FavoriteMediaRepositoryImpl @Inject constructor(
             emptyList()
         }
 
+    override suspend fun clear() {
+        favoriteMediaDao.deleteAllFavoriteMediaItems()
+    }
+
 //    override suspend fun getAllFavoriteMediaItem(): List<Media> {
 //        TODO("Not yet implemented")
 //    }

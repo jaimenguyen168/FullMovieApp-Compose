@@ -1,4 +1,4 @@
-package com.example.fullmovieapp_compose.auth.domain
+package com.example.fullmovieapp_compose.auth.domain.repo
 
 import com.example.fullmovieapp_compose.auth.util.AuthResult
 

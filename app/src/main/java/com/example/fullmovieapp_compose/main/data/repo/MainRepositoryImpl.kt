@@ -210,4 +210,9 @@ class MainRepositoryImpl @Inject constructor(
     override suspend fun getMediaListByIds(ids: List<Int>): List<Media> {
         return mediaDao.getMediaListByIds(ids = ids).map { it.toMedia() }
     }
+
+    override suspend fun clear() {
+        mediaDao.deleteAllMediaItems()
+    }
+
 }

@@ -1,25 +1,27 @@
 package com.example.fullmovieapp_compose.auth.data.remote
 
-import com.example.fullmovieapp_compose.auth.data.remote.dto.AuthRequestDto
+import com.example.fullmovieapp_compose.auth.data.remote.dto.AuthRequest
+import com.example.fullmovieapp_compose.auth.data.remote.dto.AuthResponse
 import com.example.fullmovieapp_compose.util.BackendConstants
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthApi {
 
     @POST(BackendConstants.REGISTER)
     suspend fun register(
-        @Body authRequestDto: AuthRequestDto
+        @Body authRequestDto: AuthRequest
     )
 
     @POST(BackendConstants.LOGIN)
     suspend fun login(
-        @Body authRequestDto: AuthRequestDto
-    )
+        @Body authRequestDto: AuthRequest
+    ): AuthResponse
 
     @GET(BackendConstants.AUTHENTICATE)
     suspend fun authenticate(
-        @Body authRequestDto: AuthRequestDto
+        @Header("authenticate") token: String
     )
 }
