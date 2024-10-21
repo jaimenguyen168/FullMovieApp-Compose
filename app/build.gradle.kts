@@ -7,7 +7,8 @@ plugins {
 
     alias(libs.plugins.daggerHiltAndroid)
     alias(libs.plugins.jetbrainsKotlinSerialization)
-    id("kotlin-kapt")
+//    id("kotlin-kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -46,18 +47,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         buildConfig = true
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
     packaging {
         resources {
@@ -76,7 +77,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.paging)
 
     // Coroutines
@@ -92,8 +93,8 @@ dependencies {
 
     // Dagger - Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    kapt(libs.androidx.hilt.compiler)
+    ksp(libs.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     // Retrofit

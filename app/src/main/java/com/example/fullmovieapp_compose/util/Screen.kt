@@ -28,4 +28,10 @@ sealed interface Screen {
     @Serializable data object Categories: Screen
     @Serializable
     data class CategoriesList(val category: String): Screen
+
+    // Core & Auth
+    @Serializable data object Core: Screen
+    @Serializable data object Login: Screen
+    @Serializable data object Register: Screen
+
 }

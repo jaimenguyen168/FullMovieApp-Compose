@@ -5,4 +5,6 @@ plugins {
 
     alias(libs.plugins.daggerHiltAndroid) apply false
     alias(libs.plugins.jetbrainsKotlinSerialization) apply false
+
+    alias(libs.plugins.ksp) apply false
 }

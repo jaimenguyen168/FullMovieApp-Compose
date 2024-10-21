@@ -45,7 +45,7 @@ class LoginViewModel @Inject constructor(
                 val isPasswordValid = formValidator.validatePassword.invoke(loginState.value.password)
 
                 if (isEmailValid && isPasswordValid) {
-
+                    login()
                 } else {
                     viewModelScope.launch {
                         _invalidCredentialsChannel.send(true)
@@ -55,8 +55,12 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun register() {
+    private fun login() {
         viewModelScope.launch {
+            _loginState.update {
+                it.copy(isLoading = true)
+            }
+
             val result = authRepository.login(
                 email = loginState.value.email,
                 password = loginState.value.password

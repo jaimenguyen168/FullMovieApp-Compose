@@ -26,14 +26,6 @@ class MainViewModel @Inject constructor(
     private val _mainState = MutableStateFlow(MainState())
     val mainState = _mainState.asStateFlow()
 
-    init {
-        loadTrending()
-        loadTV()
-        loadMovies()
-
-//        observeFavoriteMediaUpdates()
-    }
-
 //    private fun observeFavoriteMediaUpdates() {
 //        viewModelScope.launch {
 //            favoriteMediaRepository.favoriteMediaDbUpdateEventFlow().collect { updateEvent ->
@@ -46,7 +38,7 @@ class MainViewModel @Inject constructor(
 //        }
 //    }
 
-    fun event(mainUiEvent: MainUiEvent) {
+    fun onEvent(mainUiEvent: MainUiEvent) {
         when (mainUiEvent) {
             is MainUiEvent.Refresh -> {
                 when(mainUiEvent.route) {
@@ -97,6 +89,12 @@ class MainViewModel @Inject constructor(
                     Screen.TrendingScreen -> loadTrending(fetchFromRemote = true)
                     else -> Unit
                 }
+            }
+
+            MainUiEvent.LoadAll -> {
+                loadTrending()
+                loadTV()
+                loadMovies()
             }
         }
     }

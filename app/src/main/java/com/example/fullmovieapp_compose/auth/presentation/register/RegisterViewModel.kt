@@ -51,7 +51,7 @@ class RegisterViewModel @Inject constructor(
                 val isPasswordValid = formValidator.validatePassword.invoke(registerState.value.password)
 
                 if (isNameValid && isEmailValid && isPasswordValid) {
-
+                    register()
                 } else {
                     viewModelScope.launch {
                         _invalidCredentialsChannel.send(true)
@@ -62,11 +62,11 @@ class RegisterViewModel @Inject constructor(
     }
 
     private fun register() {
-        _registerState.update {
-            it.copy(isLoading = true)
-        }
-
         viewModelScope.launch {
+            _registerState.update {
+                it.copy(isLoading = true)
+            }
+
             val result = authRepository.register(
                 name = registerState.value.name,
                 email = registerState.value.email,
