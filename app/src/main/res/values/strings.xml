@@ -31,4 +31,17 @@
     <string name="bookmarks_fire">Bookmarks 🔥️</string>
     <string name="categories_title">Categories</string>
     <string name="action_adventure"><![CDATA[Action & Adventure]]></string>
+    <string name="an_unknown_error_occurred">An unknown error occurred</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="app_icon">App icon</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="register">Register</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="password_visible">Password Visible</string>
+    <string name="password_not_visible">Password Not Visible</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_in">Log in</string>
+    <string name="log_in_to_your_account">Log in to your account</string>
 </resources>
