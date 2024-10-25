@@ -12,12 +12,12 @@ interface AuthApi {
 
     @POST(BackendConstants.REGISTER)
     suspend fun register(
-        @Body authRequestDto: AuthRequest
+        @Body authRequest: AuthRequest
     )
 
     @POST(BackendConstants.LOGIN)
     suspend fun login(
-        @Body authRequestDto: AuthRequest
+        @Body authRequest: AuthRequest
     ): AuthResponse
 
     @GET(BackendConstants.AUTHENTICATE)

@@ -1,6 +1,7 @@
 package com.example.fullmovieapp_compose.core.presentation
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -17,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.example.fullmovieapp_compose.R
 import com.example.fullmovieapp_compose.auth.presentation.login.LogInScreen
 import com.example.fullmovieapp_compose.auth.presentation.register.RegisterScreen
 import com.example.fullmovieapp_compose.categories.presentation.CoreCategoriesScreen
@@ -26,6 +28,7 @@ import com.example.fullmovieapp_compose.main.presentation.MainScreen
 import com.example.fullmovieapp_compose.main.presentation.MainUiEvent
 import com.example.fullmovieapp_compose.main.presentation.MainViewModel
 import com.example.fullmovieapp_compose.main.presentation.main_media_list.MainMediaListScreen
+import com.example.fullmovieapp_compose.profile.presentation.ProfileScreen
 import com.example.fullmovieapp_compose.search.presentation.SearchListScreen
 import com.example.fullmovieapp_compose.ui.theme.FullMovieAppComposeTheme
 import com.example.fullmovieapp_compose.util.Screen
@@ -174,6 +177,23 @@ class MainActivity : ComponentActivity() {
             composable<Screen.CoreCategories> {
                 CoreCategoriesScreen(
                     mainNavController = mainNavController
+                )
+            }
+
+            composable<Screen.Profile> {
+                ProfileScreen(
+                    onLogout = {
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.logged_out),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        mainNavController.popBackStack() // pop profile
+                        mainNavController.popBackStack() // pop home
+
+                        mainNavController.navigate(Screen.Login)
+                    }
                 )
             }
         }

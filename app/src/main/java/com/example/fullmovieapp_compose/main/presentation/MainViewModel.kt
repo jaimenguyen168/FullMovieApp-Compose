@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fullmovieapp_compose.main.domain.model.Media
 import com.example.fullmovieapp_compose.main.domain.repo.MainRepository
+import com.example.fullmovieapp_compose.profile.domain.repo.ProfileRepository
 import com.example.fullmovieapp_compose.util.APIConstants.ALL
 import com.example.fullmovieapp_compose.util.APIConstants.MOVIE
 import com.example.fullmovieapp_compose.util.APIConstants.POPULAR
@@ -21,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository,
+    private val profileRepository: ProfileRepository,
 //    private val favoriteMediaRepository: FavoriteMediaRepository
 ): ViewModel() {
     private val _mainState = MutableStateFlow(MainState())
@@ -95,6 +97,12 @@ class MainViewModel @Inject constructor(
                 loadTrending()
                 loadTV()
                 loadMovies()
+
+                viewModelScope.launch {
+                    _mainState.update {
+                        it.copy(name = profileRepository.getName())
+                    }
+                }
             }
         }
     }

@@ -73,7 +73,7 @@ fun NonFocusedSearchBar(
                         .alpha(0.8f)
                         .background(primaryColor())
                         .clickable {
-
+                            mainNavController.navigate(Screen.Profile)
                         }
                 ) {
                     Text(

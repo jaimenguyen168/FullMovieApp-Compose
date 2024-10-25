@@ -1,6 +1,7 @@
 package com.example.fullmovieapp_compose.auth.data.repo
 
 import android.content.SharedPreferences
+import android.util.Log
 import com.example.fullmovieapp_compose.auth.data.remote.AuthApi
 import com.example.fullmovieapp_compose.auth.data.remote.dto.AuthRequest
 import com.example.fullmovieapp_compose.auth.domain.repo.AuthRepository
@@ -22,7 +23,7 @@ class AuthRepositoryImpl @Inject constructor(
         password: String
     ): AuthResult<Unit> = try {
         authApi.register(
-            AuthRequest(name, email, password)
+            AuthRequest(name = name, email = email, password = password)
         )
         login(email, password)
     } catch (e: HttpException) {
@@ -30,10 +31,12 @@ class AuthRepositoryImpl @Inject constructor(
         if (e.code() == 401) {
             AuthResult.Unauthorized()
         } else {
+            Log.i("Register Error Code", "${e.code()}, ${e.message()}")
             AuthResult.UnknownError()
         }
     } catch (e: Exception) {
         e.printStackTrace()
+        Log.i("Register Error Code From Catch", "${e.message}")
         AuthResult.UnknownError()
     }
 
@@ -42,7 +45,7 @@ class AuthRepositoryImpl @Inject constructor(
         password: String
     ): AuthResult<Unit> = try {
         val response = authApi.login(
-            AuthRequest(email, password)
+            AuthRequest(email = email, password = password)
         )
 
         sharedPreferences.edit().putString("email", email).apply()

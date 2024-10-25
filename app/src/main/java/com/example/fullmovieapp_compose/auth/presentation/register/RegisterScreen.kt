@@ -50,7 +50,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.fullmovieapp_compose.R
 import com.example.fullmovieapp_compose.auth.util.AuthResult
-import com.example.fullmovieapp_compose.util.backgroundColor
 import com.example.fullmovieapp_compose.util.onBackgroundColor
 import com.example.fullmovieapp_compose.util.primaryColor
 import com.example.fullmovieapp_compose.util.primaryContainerColor

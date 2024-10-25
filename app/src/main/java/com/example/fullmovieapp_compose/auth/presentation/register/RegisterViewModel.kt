@@ -1,5 +1,6 @@
 package com.example.fullmovieapp_compose.auth.presentation.register
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fullmovieapp_compose.auth.domain.repo.AuthRepository
@@ -53,6 +54,7 @@ class RegisterViewModel @Inject constructor(
                 if (isNameValid && isEmailValid && isPasswordValid) {
                     register()
                 } else {
+                    Log.i("Invalid credential", "Name: ${isNameValid}, email: ${isEmailValid}, password: ${isPasswordValid}")
                     viewModelScope.launch {
                         _invalidCredentialsChannel.send(true)
                     }
