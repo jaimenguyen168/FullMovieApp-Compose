@@ -66,6 +66,10 @@ class LoginViewModel @Inject constructor(
                 password = loginState.value.password
             )
             _authResultChannel.send(result)
+
+            _loginState.update {
+                it.copy(isLoading = false)
+            }
         }
     }
 }

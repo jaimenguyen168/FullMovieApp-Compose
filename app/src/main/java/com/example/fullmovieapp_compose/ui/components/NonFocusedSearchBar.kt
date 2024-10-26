@@ -77,7 +77,7 @@ fun NonFocusedSearchBar(
                         }
                 ) {
                     Text(
-                        text = username.take(1),
+                        text = username.take(1).uppercase(),
                         color = onPrimaryColor(),
                         fontSize = 19.sp,
                         modifier = Modifier.align(Alignment.Center)

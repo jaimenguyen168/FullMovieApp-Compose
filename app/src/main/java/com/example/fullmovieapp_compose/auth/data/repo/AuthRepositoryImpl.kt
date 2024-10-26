@@ -52,6 +52,8 @@ class AuthRepositoryImpl @Inject constructor(
         sharedPreferences.edit().putString("name", response.name).apply()
         sharedPreferences.edit().putString("token", response.token).apply()
 
+        Log.i("Authenticate Error Token in Login", "${response.token}")
+
         AuthResult.Authorized()
     } catch (e: HttpException) {
         e.printStackTrace()
@@ -71,18 +73,24 @@ class AuthRepositoryImpl @Inject constructor(
                 "token", null
             ) ?: return AuthResult.Unauthorized()
 
-            val response = authApi.authenticate(token)
+            Log.i("Authenticate Error Token", "$token")
+
+            authApi.authenticate(token)
             AuthResult.Authorized()
 
         } catch (e: HttpException) {
             e.printStackTrace()
             if (e.code() == 401) {
+                Log.i("Authenticate Error Code", "${e.code()}, ${e.message()}")
+//                AuthResult.Authorized()
                 AuthResult.Unauthorized()
             } else {
+                Log.i("Authenticate Error Code", "${e.code()}, ${e.message()}")
                 AuthResult.UnknownError()
             }
         } catch (e: Exception) {
             e.printStackTrace()
+            Log.i("Authenticate Error Code From Catch", "${e.message}")
             AuthResult.UnknownError()
         }
     }

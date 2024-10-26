@@ -108,7 +108,7 @@ fun LogInScreen(
             painter = painterResource(id = R.drawable.icon),
             contentDescription = stringResource(R.string.app_icon),
             modifier = Modifier
-                .size(18.dp)
+                .size(180.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .align(Alignment.CenterHorizontally)
                 .background(primaryContainerColor())
@@ -193,6 +193,8 @@ fun LogInScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
+        Spacer(modifier = Modifier.height(22.dp))
+
         if (loginState.isLoading) {
             Box(
                modifier = Modifier
@@ -214,7 +216,7 @@ fun LogInScreen(
                     .height(50.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.register),
+                    text = stringResource(R.string.log_in),
                     fontSize = 16.sp,
                 )
             }
@@ -238,6 +240,7 @@ fun LogInScreen(
             Text(
                 text = stringResource(R.string.register),
                 fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
                 color = primaryColor(),
                 modifier = Modifier.clickable {
                     onRegisterClick()

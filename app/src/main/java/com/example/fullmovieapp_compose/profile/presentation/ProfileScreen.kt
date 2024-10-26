@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,10 +61,12 @@ fun ProfileScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(55.dp)
-                    .background(backgroundColor())
+                    .background(backgroundColor()),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = stringResource(R.string.profile),
+                    fontSize = 20.sp,
                 )
             }
         }
@@ -87,7 +90,7 @@ fun ProfileScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = profileState.name.take(1),
+                    text = profileState.name.take(1).uppercase(),
                     color = onPrimaryColor(),
                     fontSize = 80.sp
                 )

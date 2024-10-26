@@ -45,14 +45,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.fullmovieapp_compose.R
 import com.example.fullmovieapp_compose.auth.util.AuthResult
+import com.example.fullmovieapp_compose.ui.components.NonFocusedTopBar
 import com.example.fullmovieapp_compose.util.onBackgroundColor
 import com.example.fullmovieapp_compose.util.primaryColor
 import com.example.fullmovieapp_compose.util.primaryContainerColor
+import com.example.fullmovieapp_compose.util.secondaryContainerColor
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -107,7 +111,7 @@ fun RegisterScreen(
             painter = painterResource(id = R.drawable.icon),
             contentDescription = stringResource(R.string.app_icon),
             modifier = Modifier
-                .size(18.dp)
+                .size(180.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .align(Alignment.CenterHorizontally)
                 .background(primaryContainerColor())
@@ -209,6 +213,8 @@ fun RegisterScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
+        Spacer(modifier = Modifier.height(22.dp))
+
         if (registerState.isLoading) {
             Box(
                modifier = Modifier
@@ -254,6 +260,7 @@ fun RegisterScreen(
             Text(
                 text = stringResource(R.string.log_in),
                 fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
                 color = primaryColor(),
                 modifier = Modifier.clickable {
                     onSignInClick()
@@ -262,6 +269,7 @@ fun RegisterScreen(
         }
     }
 }
+
 
 
 

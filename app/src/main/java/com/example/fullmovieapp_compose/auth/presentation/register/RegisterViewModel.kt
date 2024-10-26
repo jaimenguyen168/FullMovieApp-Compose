@@ -54,7 +54,6 @@ class RegisterViewModel @Inject constructor(
                 if (isNameValid && isEmailValid && isPasswordValid) {
                     register()
                 } else {
-                    Log.i("Invalid credential", "Name: ${isNameValid}, email: ${isEmailValid}, password: ${isPasswordValid}")
                     viewModelScope.launch {
                         _invalidCredentialsChannel.send(true)
                     }
