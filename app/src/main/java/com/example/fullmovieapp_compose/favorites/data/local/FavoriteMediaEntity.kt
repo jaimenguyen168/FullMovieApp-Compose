@@ -8,6 +8,9 @@ data class FavoriteMediaEntity(
     @PrimaryKey
     val mediaId: Int,
 
+    val isSynced: Boolean,
+    val isDeletedLocally: Boolean,
+
     val adult: Boolean,
     val backdropPath: String,
     val genreIds: String,

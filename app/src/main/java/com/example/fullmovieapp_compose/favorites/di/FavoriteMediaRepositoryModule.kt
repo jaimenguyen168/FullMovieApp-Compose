@@ -1,6 +1,8 @@
 package com.example.fullmovieapp_compose.favorites.di
 
+import com.example.fullmovieapp_compose.favorites.data.repo.BackendFavoritesRepositoryImpl
 import com.example.fullmovieapp_compose.favorites.data.repo.FavoriteMediaRepositoryImpl
+import com.example.fullmovieapp_compose.favorites.domain.repo.BackendFavoritesRepository
 import com.example.fullmovieapp_compose.favorites.domain.repo.FavoriteMediaRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,10 @@ abstract class FavoriteMediaRepositoryModule {
     abstract fun bindFavoriteMediaRepository(
         favoriteMediaRepositoryImpl: FavoriteMediaRepositoryImpl
     ): FavoriteMediaRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindBackendFavoritesRepository(
+        backendFavoritesRepositoryImpl: BackendFavoritesRepositoryImpl
+    ): BackendFavoritesRepository
 }

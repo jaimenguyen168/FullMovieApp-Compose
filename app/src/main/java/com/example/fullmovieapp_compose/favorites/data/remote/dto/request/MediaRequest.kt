@@ -22,9 +22,9 @@ data class MediaRequest(
     val voteCount: Int,
     var category: String,
 
-    val runTime: Int,
+    val runtime: Int,
     val tagLine: String,
 
-    val videosIds: String,
+    val videoIds: String,
     val similarMediaIds: String
 )
